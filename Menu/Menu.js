@@ -10,13 +10,14 @@ let menuItems = [
 ];
 function menu(arr_of_str) {
   let menu_button = document.querySelector(".menu-button")
-  menu_button.addEventListener("click", () => { menu_button.classList.toggle("menu--open") })
+  menu_button.addEventListener("click", () => { div.classList.toggle("menu--open") })
+
   let header = document.querySelector(".header")
   let div = document.createElement("div")
   let ul = document.createElement("ul")
+  div.classList.add("menu")
   header.append(div)
   div.append(ul)
-  div.classList.add("menu")
 
 
   arr_of_str.map((string, index) => {

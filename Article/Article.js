@@ -90,7 +90,7 @@ const data = [
 
 function ArticleCreator(arr_of_obj) {
   return (
-    arr_of_obj.map(Obj => {
+    arr_of_obj.map(obj => {
       let div = document.createElement("div")
       let h2 = document.createElement("h2")
       let date = document.createElement("p")

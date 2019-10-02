@@ -90,24 +90,35 @@ const data = [
 
 function ArticleCreator(arr_of_obj) {
   return (
-    arr_of_obj.map(eachObj => {
+    arr_of_obj.map(Obj => {
       let div = document.createElement("div")
       let h2 = document.createElement("h2")
+      let date = document.createElement("p")
       let p1 = document.createElement("p")
       let p2 = document.createElement("p")
       let p3 = document.createElement("p")
       let span = document.createElement("span")
-      div.append(h2, p1, p2, p3, span)
+
       div.classList.add("article")
-      p1.classList.add("date")
-      p2.classList.add("date")
-      p3.classList.add("date")
+      date.classList.add("date")
       span.classList.add("expandButton")
+
+      h2.textContent = obj.title
+      date.textContent = obj.date
+      p1.textContent = obj.firstParagraph
+      p2.textContent = obj.secondParagraph
+      p3.textContent = obj.thirdParagraph
+
+      span.addEventListener("click", () => {
+        span.classList.toggle("expandButton")
+      })
+      div.append(h2, date, p1, p2, p3, span)
+      document.querySelector(".articles").append(div)
     })
 
   )
 }
-
+ArticleCreator(data);
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below:
   <div class="article">
     <h2>{title of the article}</h2>

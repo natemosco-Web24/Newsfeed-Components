@@ -108,10 +108,12 @@ function ArticleCreator(arr_of_obj) {
       p1.textContent = obj.firstParagraph
       p2.textContent = obj.secondParagraph
       p3.textContent = obj.thirdParagraph
+      span.textContent = "click-to-open"
 
       span.addEventListener("click", () => {
-        span.classList.toggle("expandButton")
+        div.classList.toggle("article-open")
       })
+
       div.append(h2, date, p1, p2, p3, span)
       document.querySelector(".articles").append(div)
     })

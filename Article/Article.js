@@ -101,8 +101,11 @@ function ArticleCreator(arr_of_obj) {
       icon_div.addEventListener("click", (event) => {
         // event.stopPropagation()
         let articles_container = document.querySelector(".articles")
-        // articles_container.removeChild(event.target.parentNode.parentNode)
-        console.log(event)
+        articles_container.removeChild(event.currentTarget.parentNode)
+        // console.dir(event)
+        // debugger
+        // console.dir(event.currentTarget)
+        // console.dir({ ...event })
       })
 
       let icon_use = document.createElement("p")
@@ -140,14 +143,17 @@ function ArticleCreator(arr_of_obj) {
       let p1 = document.createElement("p")
       p1.textContent = obj.firstParagraph
       p1.style.width = "95%"
+      p1.classList.add("paragraph1")
 
       let p2 = document.createElement("p")
       p2.textContent = obj.secondParagraph
       p2.style.width = "95%"
+      p2.classList.add("paragraph2")
 
       let p3 = document.createElement("p")
       p3.textContent = obj.thirdParagraph
       p3.style.width = "95%"
+      p3.classList.add("paragraph3")
 
       let span = document.createElement("span")
       span.classList.add("expandButton")

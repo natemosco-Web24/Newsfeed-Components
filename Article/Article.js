@@ -88,14 +88,98 @@ const data = [
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+function ArticleCreator(arr_of_obj) {
+  return (
+    arr_of_obj.map(obj => {
+      //ADDING A CLOSE BUTTON
+      let icon_div = document.createElement("div")
+      icon_div.style.display = "flex"
+      icon_div.style.flexDirection = "column"
+      icon_div.style.alignItems = "center"
+      icon_div.style.justifyContent = "center"
+      icon_div.width = "20%"
+      icon_div.addEventListener("click", (event) => {
+        // event.stopPropagation()
+        let articles_container = document.querySelector(".articles")
+        articles_container.removeChild(event.currentTarget.parentNode)
+        // console.dir(event)
+        // debugger
+        // console.dir(event.currentTarget)
+        // console.dir({ ...event })
+      })
+
+      let icon_use = document.createElement("p")
+      icon_use.textContent = "Remove Article"
+
+      let img = document.createElement("img")
+      img.style.width = "32px"
+      img.style.marginTop = "8px"
+      img.style.height = "32px"
+      img.setAttribute("src", "https://image.flaticon.com/icons/svg/190/190406.svg")
+
+      icon_div.append(img, icon_use)
+
+      let div = document.createElement("div")
+      div.classList.add("article")
+      div.style.display = "flex"
+      div.style.flexDirection = "row"
+      div.style.flexWrap = "wrap"
+      div.style.justifyContent = "space-evenly"
+      div.style.alignItems = "center"
+
+
+      let h2 = document.createElement("h2")
+      h2.textContent = obj.title
+      h2.style.width = "80%"
+
+
+
+      let date = document.createElement("p")
+      date.classList.add("date")
+      date.textContent = obj.date
+      date.style.width = "95%"
+
+
+      let p1 = document.createElement("p")
+      p1.textContent = obj.firstParagraph
+      p1.style.width = "95%"
+      p1.classList.add("paragraph1")
+
+      let p2 = document.createElement("p")
+      p2.textContent = obj.secondParagraph
+      p2.style.width = "95%"
+      p2.classList.add("paragraph2")
+
+      let p3 = document.createElement("p")
+      p3.textContent = obj.thirdParagraph
+      p3.style.width = "95%"
+      p3.classList.add("paragraph3")
+
+      let span = document.createElement("span")
+      span.classList.add("expandButton")
+      span.textContent = "click-to-open"
+      span.style.width = "95%"
+
+      //ADDING THE CSS THAT IS REQUIRED TO MAKE THIS WORK APPROPRIATELY
+
+
+
+      span.addEventListener("click", () => {
+        div.classList.toggle("article-open")
+      })
+
+      div.append(h2, icon_div, date, p1, p2, p3, span)
+      document.querySelector(".articles").append(div)
+    })
+
+  )
+}
+ArticleCreator(data);
+/* Step 1: Create a function that creates a component. You will want your component to look like the template below:
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
-
     {three separate paragraph elements}
-
     <span class='expandButton'></span>
   </div>
 
